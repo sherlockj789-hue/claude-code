@@ -1,0 +1,22 @@
+[build]
+  # Directory with top-level files (e.g., package.json)
+  base = ""
+  # Command to build your site
+  command = "npm run build"
+  # Directory to deploy (e.g., "build", "dist", "public")
+  publish = "dist"
+  # Directory for serverless functions
+  functions = "netlify/functions"
+
+# Redirect rules
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
+
+# Branch-specific settings
+[context.production.environment]
+  NODE_ENV = "production"
+
+[context.deploy-preview]
+  command = "npm run build:preview"
